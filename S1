@@ -1,0 +1,67 @@
+package test;
+public class Soultion {
+    public int solution(int[][] A){
+        //to store the count
+        int answer = 0;
+        
+        //get the value of the n and m
+        int n = A.length;
+        int m = A[0].length;
+
+        //iterate through each value of the matrix one by one
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int value = A[i][j];
+                int min_value_row = Integer.MAX_VALUE;
+                int max_value_row = Integer.MIN_VALUE;
+
+                int min_value_col = Integer.MAX_VALUE;
+                int max_value_col = Integer.MIN_VALUE;
+
+                //get the min and max of the row
+                for (int k = 0; k < m ; k++) {
+                    if(A[i][k] < min_value_row){
+                        min_value_row = A[i][k];
+                    }
+                    if(A[i][k] > max_value_row){
+                        max_value_row = A[i][k];
+                    }
+                }
+
+                //get the min and max of the col
+                for (int k = 0; k < n ; k++) {
+                    if(A[k][j] < min_value_col){
+                        min_value_col = A[k][j];
+                    }
+                    if(A[k][j] > max_value_col){
+                        max_value_col = A[k][j];
+                    }
+                }
+
+                //check for the condition
+                if(min_value_row == max_value_col){
+                    answer++;
+                }
+                else if(max_value_row == min_value_col){
+                    answer++;
+                }
+            }
+        }
+        //return the answer
+        return answer;
+    }
+
+    //main method for the testing
+    public static void main(String[] args) {
+        Soultion solution = new Soultion();
+        int arr[][] = {
+                {0,1,9,3},
+                {7,5,8,3},
+                {9,2,9,4},
+                {4,6,7,1}
+        };
+        
+        System.out.println("Saddle Points: " + solution.solution(arr) );
+
+    }
+}
