@@ -1,0 +1,38 @@
+package test1;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("hihihi");
+		
+		int result = solution("banana");
+		System.out.println(result);
+	}
+	public static int solution(String S) {
+		int count = 0;
+		String [] alpa = S.split("");
+		
+		for (int i =0 ; i< S.length(); i++) {
+			
+			if(i==S.length()-1) {
+				return count;
+			}
+			for(int j = i+1 ;j < i+2; j++) {
+				
+				//System.out.println(alpa[i]);
+				//System.out.println(alpa[j]);
+				if(alpa[i].compareTo(alpa[j]) > 0) {
+					System.out.println("i > j" + " alpa[i] : "+ alpa[i] + " alpa[j] : "+  alpa[j] );
+				}
+				else {
+					System.out.println("i <= j");
+				}
+				
+			}
+		}
+		
+		return count;
+	}
+
+}
