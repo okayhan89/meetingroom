@@ -1,0 +1,33 @@
+참고 URL : https://leetcode.com/discuss/interview-question/algorithms/125050/maximal-ascending-slice
+
+package test;
+
+public class Naver1 {
+	
+	public static void main(String[] args) {
+		int [] A = {2, 2, 2, 2, 1, 2, -1, 2, 1, 3};
+//		int [] A = {30,20,10};
+		int a = solution(A);
+		System.out.println("정답 : " + a);
+	}
+	
+	public static int solution(int[] A) {
+		// write your code in Java SE 8
+		int maxSliceStart = 0;
+		int maxSliceLength = 1;
+
+		int currentSliceStart = 0;
+
+		for (int i = 1; i < A.length; i++) {
+			if (A[i - 1] >= A[i])
+				currentSliceStart = i;
+
+			if (i - currentSliceStart + 1 > maxSliceLength) {
+				maxSliceStart = currentSliceStart;
+				maxSliceLength = i - currentSliceStart + 1;
+			}
+		}
+
+		return maxSliceStart;
+	}
+}
